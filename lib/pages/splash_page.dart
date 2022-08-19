@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:laverdi/pages/home_page.dart';
 
 class SplashPage extends StatelessWidget {
