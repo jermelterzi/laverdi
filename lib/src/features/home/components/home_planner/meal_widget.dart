@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laverdi/src/features/home/components/planner/recipes_card_widget.dart';
+import 'package:laverdi/src/features/home/components/home_planner/recipes_card_widget.dart';
 
 class MealWidget extends StatelessWidget {
   const MealWidget({Key? key, required this.name, required this.icon})
@@ -38,12 +38,10 @@ class MealWidget extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         SizedBox(
-          height: 80,
+          height: 128,
           child: ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (ctx, index) => const RecipesCard(
-              name: 'Card Exemplo de Café da Manhã',
-            ),
+            itemBuilder: (ctx, index) => const RecipesCard(),
             itemCount: 1,
           ),
         ),

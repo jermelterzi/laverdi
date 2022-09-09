@@ -11,10 +11,6 @@ final mealsList = [
     icon: FontAwesomeIcons.solidSun,
   ),
   Meal(
-    name: 'CAFÉ DA TARDE',
-    icon: FontAwesomeIcons.a,
-  ),
-  Meal(
     name: 'JANTAR',
     icon: FontAwesomeIcons.solidMoon,
   )
