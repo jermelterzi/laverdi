@@ -19,40 +19,35 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: _buildBody(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(
           FontAwesomeIcons.plus,
-          size: 24,
         ),
       ),
       bottomNavigationBar: const LaVerdiBottomNavigationBar(),
-    );
-  }
-
-  Widget _buildBody(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/laverdi_background.jpg'),
-            fit: BoxFit.cover,
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/laverdi_background.jpg'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 16.0,
-            left: 8.0,
-            right: 8.0,
-          ),
-          child: Column(
-            children: [
-              const HomeHeader(),
-              _showCalendar ? const HomeCalendar() : Container(),
-              const HomePlanner(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 16.0,
+              left: 8.0,
+              right: 8.0,
+            ),
+            child: Column(
+              children: [
+                const HomeHeader(),
+                _showCalendar ? const HomeCalendar() : Container(),
+                const HomePlanner(),
+              ],
+            ),
           ),
         ),
       ),
