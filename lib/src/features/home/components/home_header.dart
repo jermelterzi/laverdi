@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:laverdi/src/shared/app_routes.dart';
 import 'package:laverdi/src/shared/extensions/string_extension.dart';
 
 class HomeHeader extends StatefulWidget {
@@ -88,10 +89,14 @@ class _HomeHeaderState extends State<HomeHeader> {
               ],
             ),
           ),
-          CircleAvatar(
-            radius: 28,
-            backgroundImage: const AssetImage('assets/images/laverdi_logo.png'),
-            backgroundColor: Theme.of(context).colorScheme.primary,
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, AppRoutes.USER_DETAILS),
+            child: CircleAvatar(
+              radius: 28,
+              backgroundImage:
+                  const AssetImage('assets/images/laverdi_logo.png'),
+              backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ],
       ),

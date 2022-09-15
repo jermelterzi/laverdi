@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:laverdi/src/features/home/bloc/home_bloc.dart';
+import 'package:laverdi/src/features/user/pages/user_details_page.dart';
 import 'package:laverdi/src/shared/app_routes.dart';
 import 'package:provider/provider.dart';
 
-import 'features/home/screens/home_page.dart';
+import 'features/home/pages/home_page.dart';
 
 class LaverdiApp extends StatelessWidget {
   const LaverdiApp({Key? key}) : super(key: key);
@@ -39,6 +40,7 @@ class LaverdiApp extends StatelessWidget {
         ),
         routes: {
           AppRoutes.HOME_PAGE: (ctx) => const HomePage(),
+          AppRoutes.USER_DETAILS: (ctx) => const UserDetailsScreen(),
         },
       ),
     );
