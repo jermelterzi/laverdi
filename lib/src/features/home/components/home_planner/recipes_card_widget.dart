@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:laverdi/src/features/recipes/models/recipe.dart';
 
 class RecipesCard extends StatelessWidget {
-  const RecipesCard({Key? key}) : super(key: key);
+  RecipesCard({Key? key}) : super(key: key);
+
+  final Recipe recipe = Recipe(
+    difficulty: 'Fácil',
+    name: 'Panqueca',
+    time: 30,
+    yield: 1,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -11,31 +19,59 @@ class RecipesCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: SizedBox(
-          height: 104,
-          child: Row(
+          height: 88,
+          child: Flex(
+            direction: Axis.horizontal,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Image.asset('assets/images/default_recipe_pic.jpg'),
-              const SizedBox(
-                width: 8.0,
-              ),
               Expanded(
+                flex: 30,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.horizontal(
+                      left: Radius.circular(16.0)),
+                  child: Image.asset(
+                    'assets/images/default_recipe_pic.jpg',
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+              const Spacer(flex: 5),
+              Expanded(
+                flex: 65,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Nome da Receita'),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Tempo de Preparo: 30 mins',
-                      style: Theme.of(context).textTheme.labelSmall,
+                    Flexible(
+                      flex: 40,
+                      child: Text(
+                        recipe.name,
+                        style: Theme.of(context).textTheme.titleLarge,
+                        softWrap: false,
+                        overflow: TextOverflow.fade,
+                      ),
                     ),
-                    Text(
-                      'Dificuldade: Fácil',
-                      style: Theme.of(context).textTheme.labelSmall,
+                    const Spacer(flex: 3),
+                    Flexible(
+                      flex: 19,
+                      child: Text(
+                        'Tempo de Preparo: ${recipe.time} mins',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ),
-                    Text(
-                      'Serve: 2',
-                      style: Theme.of(context).textTheme.labelSmall,
+                    Flexible(
+                      flex: 19,
+                      child: Text(
+                        'Dificuldade: ${recipe.difficulty}',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
+                    ),
+                    Flexible(
+                      flex: 19,
+                      child: Text(
+                        'Serve: ${recipe.yield} porção',
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
                     ),
                   ],
                 ),

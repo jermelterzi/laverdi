@@ -36,13 +36,15 @@ class MealWidget extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 8),
-        SizedBox(
-          height: 128,
-          child: ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (ctx, index) => const RecipesCard(),
-            itemCount: 1,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: SizedBox(
+            height: 2 * 96,
+            child: ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (ctx, index) => RecipesCard(),
+              itemCount: 2,
+            ),
           ),
         ),
       ],
