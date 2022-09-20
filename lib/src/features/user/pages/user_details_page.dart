@@ -43,139 +43,161 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Form(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Flex(
-              direction: Axis.vertical,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Center(
-                    child: CircleAvatar(
-                      radius: 80,
-                      backgroundImage:
-                          const AssetImage('assets/images/laverdi_logo.png'),
-                      backgroundColor: Theme.of(context).colorScheme.primary,
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Form(
+                key: _formKey,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                child: Flex(
+                  direction: Axis.vertical,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Flexible(
+                      flex: 3,
+                      child: Center(
+                        child: CircleAvatar(
+                          radius: 80,
+                          backgroundImage: const AssetImage(
+                              'assets/images/laverdi_logo.png'),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                Flexible(
-                  flex: 7,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(32.0)),
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                    child: ListView(
-                      children: [
-                        EditTextField(
-                          value: user.name.toString(),
-                          label: 'Nome',
-                          hint: 'Nome Completo',
-                          validator: (_) => user.name.validator(),
-                          onChanged: user.setName,
+                    Flexible(
+                      flex: 7,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(32.0)),
                         ),
-                        const SizedBox(height: 8.0),
-                        EditTextField(
-                          value: user.email.toString(),
-                          label: 'E-mail',
-                          hint: 'exemplo@laverdi.com',
-                          validator: (_) => user.email.validator(),
-                          onChanged: user.setEmail,
-                        ),
-                        const SizedBox(height: 8.0),
-                        EditTextField(
-                          value: user.phone.toString(),
-                          label: 'Celular',
-                          hint: '(11) 99999-9999',
-                          validator: (_) => user.phone.validator(),
-                          onChanged: user.setPhone,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            TelefoneInputFormatter(),
-                          ],
-                        ),
-                        const SizedBox(height: 8.0),
-                        EditTextField(
-                          value: user.cep.toString(),
-                          label: 'CEP',
-                          hint: '01234-567',
-                          validator: (_) => user.cep.validator(),
-                          onChanged: user.setAddress,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            CepInputFormatter(),
-                          ],
-                        ),
-                        const SizedBox(height: 8.0),
-                        EditTextField(
-                          value: user.cpf.toString(),
-                          label: 'CPF',
-                          hint: '123.456.789-00',
-                          validator: (_) => user.cpf.validator(),
-                          onChanged: user.setCpf,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                            CpfInputFormatter(),
-                          ],
-                        ),
-                        const SizedBox(height: 16.0),
-                        Flex(
-                          direction: Axis.horizontal,
+                        padding: const EdgeInsets.all(16.0),
+                        child: ListView(
+                          physics: const NeverScrollableScrollPhysics(),
                           children: [
-                            Expanded(
-                              flex: 10,
-                              child: SizedBox(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: const Size.fromHeight(48),
-                                    backgroundColor: Colors.white,
-                                    elevation: 0,
-                                    foregroundColor:
-                                        Theme.of(context).colorScheme.primary,
-                                    side: BorderSide(
-                                      width: 2.0,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
+                            EditTextField(
+                              value: user.name.toString(),
+                              label: 'Nome',
+                              hint: 'Nome Completo',
+                              validator: (_) => user.name.validator(),
+                              onChanged: user.setName,
+                            ),
+                            const SizedBox(height: 8.0),
+                            EditTextField(
+                              value: user.email.toString(),
+                              label: 'E-mail',
+                              hint: 'exemplo@laverdi.com',
+                              validator: (_) => user.email.validator(),
+                              onChanged: user.setEmail,
+                            ),
+                            const SizedBox(height: 8.0),
+                            EditTextField(
+                              value: user.phone.toString(),
+                              label: 'Celular',
+                              hint: '(11) 99999-9999',
+                              validator: (_) => user.phone.validator(),
+                              onChanged: user.setPhone,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                TelefoneInputFormatter(),
+                              ],
+                            ),
+                            const SizedBox(height: 8.0),
+                            EditTextField(
+                              value: user.cep.toString(),
+                              label: 'CEP',
+                              hint: '01234-567',
+                              validator: (_) => user.cep.validator(),
+                              onChanged: user.setAddress,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                CepInputFormatter(),
+                              ],
+                            ),
+                            const SizedBox(height: 8.0),
+                            EditTextField(
+                              value: user.cpf.toString(),
+                              label: 'CPF',
+                              hint: '123.456.789-00',
+                              validator: (_) => user.cpf.validator(),
+                              onChanged: user.setCpf,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                CpfInputFormatter(),
+                              ],
+                            ),
+                            const SizedBox(height: 16.0),
+                            Flex(
+                              direction: Axis.horizontal,
+                              children: [
+                                Expanded(
+                                  flex: 10,
+                                  child: SizedBox(
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        minimumSize: const Size.fromHeight(48),
+                                        backgroundColor: Colors.white,
+                                        elevation: 0,
+                                        foregroundColor: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                        side: BorderSide(
+                                          width: 2.0,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                        ),
+                                      ),
+                                      onPressed: () {},
+                                      child: const Text('CANCELAR'),
                                     ),
                                   ),
-                                  onPressed: () {},
-                                  child: const Text('CANCELAR'),
                                 ),
-                              ),
-                            ),
-                            const Spacer(),
-                            Expanded(
-                              flex: 10,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size.fromHeight(48),
-                                  elevation: 0,
-                                ),
-                                onPressed: () {
-                                  final valid = form.validate();
+                                const Spacer(),
+                                Expanded(
+                                  flex: 10,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      minimumSize: const Size.fromHeight(48),
+                                      elevation: 0,
+                                    ),
+                                    onPressed: () {
+                                      final valid = form.validate();
 
-                                  if (valid) {
-                                    log('Usuário salvo com sucesso!');
-                                    log(user.toString());
-                                  } else {
-                                    log('Erro ao salvar!');
-                                  }
-                                },
-                                child: const Text('SALVAR'),
-                              ),
-                            ),
+                                      if (!valid) {
+                                        const snackBar = SnackBar(
+                                          content: Text(
+                                            'Existem campos inválidos!',
+                                          ),
+                                          backgroundColor: Colors.red,
+                                        );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
+                                        return;
+                                      }
+
+                                      if (user.id == -1) {
+                                        log('Usuário criado com sucesso!');
+                                        log(user.toString());
+                                      } else {
+                                        log('Usuário editado com sucesso!');
+                                        log(user.toString());
+                                      }
+                                    },
+                                    child: const Text('SALVAR'),
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
