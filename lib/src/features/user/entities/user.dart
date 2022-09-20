@@ -76,7 +76,9 @@ class User {
   static User fromJson(dynamic data) {
     return User(
       id: data['id'],
-      registeredAt: data['registeredAt'],
+      registeredAt: data['registeredAt'] != null
+          ? DateTime.parse(data['registeredAt'])
+          : null,
       name: data['name'],
       email: data['email'],
       phone: data['phone'],
@@ -105,5 +107,10 @@ class User {
       'isVegan': isVegan,
       'isLac': isLac,
     };
+  }
+
+  @override
+  String toString() {
+    return 'Nome: $_name \nE-mail: $_email \nCelular: $_phone \nCEP: $_cep \nCPF: $_cpf \n';
   }
 }

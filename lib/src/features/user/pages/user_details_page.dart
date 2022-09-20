@@ -44,6 +44,8 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
             ),
           ),
           child: Form(
+            key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Flex(
               direction: Axis.vertical,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +76,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                           value: user.name.toString(),
                           label: 'Nome',
                           hint: 'Nome Completo',
-                          validator: (v) => user.name.validator(),
+                          validator: (_) => user.name.validator(),
                           onChanged: user.setName,
                         ),
                         const SizedBox(height: 8.0),
@@ -82,7 +84,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                           value: user.email.toString(),
                           label: 'E-mail',
                           hint: 'exemplo@laverdi.com',
-                          validator: (v) => user.email.validator(),
+                          validator: (_) => user.email.validator(),
                           onChanged: user.setEmail,
                         ),
                         const SizedBox(height: 8.0),
@@ -90,7 +92,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                           value: user.phone.toString(),
                           label: 'Celular',
                           hint: '(11) 99999-9999',
-                          validator: (v) => user.phone.validator(),
+                          validator: (_) => user.phone.validator(),
                           onChanged: user.setPhone,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
@@ -102,7 +104,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                           value: user.cep.toString(),
                           label: 'CEP',
                           hint: '01234-567',
-                          validator: (v) => user.cep.validator(),
+                          validator: (_) => user.cep.validator(),
                           onChanged: user.setAddress,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
@@ -114,7 +116,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                           value: user.cpf.toString(),
                           label: 'CPF',
                           hint: '123.456.789-00',
-                          validator: (v) => user.cpf.validator(),
+                          validator: (_) => user.cpf.validator(),
                           onChanged: user.setCpf,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly,
@@ -159,6 +161,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
 
                                   if (valid) {
                                     log('Usuário salvo com sucesso!');
+                                    log(user.toString());
                                   } else {
                                     log('Erro ao salvar!');
                                   }

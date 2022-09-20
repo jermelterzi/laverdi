@@ -12,7 +12,7 @@ class Email implements ValueObject {
       return 'O E-mail deve ser preenchido';
     }
 
-    if (string_validator.isEmail(_value)) {
+    if (!string_validator.isEmail(_value)) {
       return 'Insira um e-mail válido';
     }
     return null;

@@ -1,4 +1,3 @@
-import 'package:brasil_fields/brasil_fields.dart';
 import 'package:laverdi/src/features/user/value_objects/value_object.dart';
 
 class Cep implements ValueObject {
