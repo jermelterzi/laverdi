@@ -1,12 +1,21 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-abstract class HomeEvent {}
+part of 'home_bloc.dart';
 
-class LoadMealsEvent extends HomeEvent {}
+abstract class HomeEvent extends Equatable {
+  const HomeEvent();
+
+  @override
+  List<Object?> get props => [];
+}
+
+class LoadMealsEvent extends HomeEvent {
+  final DateTime date;
+
+  const LoadMealsEvent({required this.date});
+
+  @override
+  List<Object?> get props => [date];
+}
 
 class ShowCalendarEvent extends HomeEvent {
-  bool showCalendar;
-
-  ShowCalendarEvent({
-    required this.showCalendar,
-  });
+  const ShowCalendarEvent();
 }

@@ -19,6 +19,8 @@ dependencies:
     sdk: flutter
   brasil_fields: ^1.5.0
   string_validator: ^0.3.0
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

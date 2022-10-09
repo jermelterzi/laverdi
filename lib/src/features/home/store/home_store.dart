@@ -2,11 +2,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../models/meal.dart';
 
-class HomeController {
+class HomeStore {
   final List<Meal> _meals = [];
   bool _isCalendarActive = false;
 
-  List<Meal> loadMeals() {
+  Stream<List<Meal>> loadMeals(DateTime date) async* {
     _meals.addAll([
       Meal(
         name: 'CAFÉ DA MANHÃ',
@@ -21,11 +21,11 @@ class HomeController {
         icon: FontAwesomeIcons.solidMoon,
       )
     ]);
-    return _meals;
+    yield _meals;
   }
 
-  bool showCalendar() {
+  Stream<bool> showCalendar() async* {
     _isCalendarActive = !_isCalendarActive;
-    return _isCalendarActive;
+    yield _isCalendarActive;
   }
 }

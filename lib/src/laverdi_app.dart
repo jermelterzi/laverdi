@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:laverdi/src/features/home/bloc/home_bloc.dart';
-import 'package:laverdi/src/features/user/pages/user_details_page.dart';
+import 'package:laverdi/src/features/home/store/home_store.dart';
+import 'package:laverdi/src/features/user/view/user_details_view.dart';
 import 'package:laverdi/src/shared/app_routes.dart';
-import 'package:provider/provider.dart';
 
-import 'features/home/pages/home_page.dart';
+import 'features/home/view/home_view.dart';
 
 class LaverdiApp extends StatelessWidget {
   const LaverdiApp({Key? key}) : super(key: key);
@@ -13,10 +14,13 @@ class LaverdiApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        Provider(create: (_) => HomeBloc()),
-      ],
+    return BlocProvider(
+      create: (context) => HomeBloc(store: HomeStore())
+        ..add(
+          LoadMealsEvent(
+            date: DateTime.now(),
+          ),
+        ),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'LaVerdi',
@@ -39,8 +43,8 @@ class LaverdiApp extends StatelessWidget {
               ),
         ),
         routes: {
-          AppRoutes.HOME_PAGE: (ctx) => const HomePage(),
-          AppRoutes.USER_DETAILS: (ctx) => const UserDetailsScreen(),
+          AppRoutes.HOME_PAGE: (ctx) => const HomeView(),
+          AppRoutes.USER_DETAILS: (ctx) => const UserDetailsView(),
         },
       ),
     );

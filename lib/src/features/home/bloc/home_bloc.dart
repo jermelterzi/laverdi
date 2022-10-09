@@ -1,33 +1,59 @@
 import 'dart:async';
 
-import 'package:laverdi/src/features/home/bloc/home_events.dart';
-import 'package:laverdi/src/features/home/bloc/home_state.dart';
-import 'package:laverdi/src/features/home/services/home_controller.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:laverdi/src/features/home/models/meal.dart';
+import 'package:laverdi/src/features/home/store/home_store.dart';
 
-import '../models/meal.dart';
+part 'home_events.dart';
+part 'home_state.dart';
 
-class HomeBloc {
-  final _homeController = HomeController();
-  final StreamController<HomeEvent> _inputHomeController =
-      StreamController<HomeEvent>.broadcast();
-  final StreamController<HomeState> _outputHomeController =
-      StreamController<HomeState>.broadcast();
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  final HomeStore _store;
 
-  Sink<HomeEvent> get inputEvent => _inputHomeController.sink;
-  Stream<HomeState> get stream => _outputHomeController.stream;
-
-  HomeBloc() {
-    _inputHomeController.stream.listen(_mapEventToState);
+  HomeBloc({required HomeStore store})
+      : _store = store,
+        super(
+          HomeState(),
+        ) {
+    on<LoadMealsEvent>(_loadMeals);
+    on<ShowCalendarEvent>(_showCalendar);
   }
 
-  void _mapEventToState(HomeEvent event) {
-    List<Meal> meals = [];
+  FutureOr<void> _loadMeals(
+    LoadMealsEvent event,
+    Emitter<HomeState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        status: HomeStatus.loading,
+      ),
+    );
+    emit.forEach<List<Meal>>(
+      _store.loadMeals(event.date),
+      onData: (data) => state.copyWith(
+        status: HomeStatus.success,
+        meals: data,
+        date: event.date,
+      ),
+      onError: (error, stackTrace) => state.copyWith(
+        errorMessage: error.toString(),
+      ),
+    );
+  }
 
-    if (event is LoadMealsEvent) {
-      meals = _homeController.loadMeals();
-    } else if (event is ShowCalendarEvent) {
-      _homeController.showCalendar();
-    }
-    _outputHomeController.add(HomeSucessState(meals: meals));
+  FutureOr<void> _showCalendar(
+    ShowCalendarEvent event,
+    Emitter<HomeState> emit,
+  ) {
+    emit.forEach<bool>(
+      _store.showCalendar(),
+      onData: (value) => state.copyWith(
+        showCalendar: value,
+      ),
+      onError: (error, stackTrace) => state.copyWith(
+        errorMessage: error.toString(),
+      ),
+    );
   }
 }

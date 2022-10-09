@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:laverdi/src/features/home/bloc/home_bloc.dart';
 import 'package:laverdi/src/shared/app_routes.dart';
 import 'package:laverdi/src/shared/extensions/string_extension.dart';
 
-class HomeHeader extends StatefulWidget {
+class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
-
-  @override
-  State<HomeHeader> createState() => _HomeHeaderState();
-}
-
-class _HomeHeaderState extends State<HomeHeader> {
-  bool _showCalendar = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,68 +20,72 @@ class _HomeHeaderState extends State<HomeHeader> {
       child: Row(
         children: [
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 4.0),
-                    child: Text(
-                      DateTime.now().day.toString().padLeft(2, '0'),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+            child: BlocBuilder<HomeBloc, HomeState>(
+              builder: (context, state) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 4.0),
+                        child: Text(
+                          DateTime.now().day.toString().padLeft(2, '0'),
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(width: 8.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _showCalendar
-                        ? const Text(
-                            'HOJE',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.black54,
-                            ),
-                          )
-                        : Container(height: 0),
-                    Text(
-                      DateFormat('EEEE', 'pt_BR')
-                          .format(DateTime.now())
-                          .capitalize(),
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    const SizedBox(width: 8.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        state.showCalendar
+                            ? const Text(
+                                'HOJE',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black54,
+                                ),
+                              )
+                            : Container(height: 0),
+                        Text(
+                          DateFormat('EEEE', 'pt_BR')
+                              .format(DateTime.now())
+                              .capitalize(),
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 8.0),
+                    CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      child: IconButton(
+                        onPressed: () {
+                          context.read<HomeBloc>().add(
+                                const ShowCalendarEvent(),
+                              );
+                        },
+                        icon: Icon(
+                          state.showCalendar
+                              ? FontAwesomeIcons.chevronUp
+                              : FontAwesomeIcons.chevronDown,
+                          color: Colors.white,
+                        ),
+                        iconSize: 12,
                       ),
                     ),
                   ],
-                ),
-                const SizedBox(width: 8.0),
-                CircleAvatar(
-                  radius: 14,
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  child: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        _showCalendar = _showCalendar;
-                      });
-                    },
-                    icon: Icon(
-                      _showCalendar
-                          ? FontAwesomeIcons.chevronUp
-                          : FontAwesomeIcons.chevronDown,
-                      color: Colors.white,
-                    ),
-                    iconSize: 12,
-                  ),
-                ),
-              ],
+                );
+              },
             ),
           ),
           GestureDetector(

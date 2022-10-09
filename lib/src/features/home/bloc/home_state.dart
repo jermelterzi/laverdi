@@ -1,18 +1,50 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import '../models/meal.dart';
+part of 'home_bloc.dart';
 
-abstract class HomeState {
-  List<Meal> meals;
+enum HomeStatus {
+  initial,
+  loading,
+  success,
+  error,
+}
+
+class HomeState extends Equatable {
+  final HomeStatus status;
+  final List<Meal> meals;
+  final bool showCalendar;
+  final DateTime _date;
+  final String? errorMessage;
+
+  DateTime get date => _date;
 
   HomeState({
-    required this.meals,
-  });
-}
+    this.status = HomeStatus.initial,
+    this.showCalendar = false,
+    this.meals = const [],
+    DateTime? date,
+    this.errorMessage,
+  }) : _date = date ?? DateTime.now();
 
-class HomeInitialState extends HomeState {
-  HomeInitialState() : super(meals: []);
-}
+  HomeState copyWith({
+    HomeStatus? status,
+    List<Meal>? meals,
+    bool? showCalendar,
+    DateTime? date,
+    String? errorMessage,
+  }) {
+    return HomeState(
+      status: status ?? this.status,
+      meals: meals ?? this.meals,
+      showCalendar: showCalendar ?? this.showCalendar,
+      date: date ?? this.date,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
 
-class HomeSucessState extends HomeState {
-  HomeSucessState({required List<Meal> meals}) : super(meals: meals);
+  @override
+  List<Object?> get props => [
+        status,
+        meals,
+        showCalendar,
+        errorMessage,
+      ];
 }
