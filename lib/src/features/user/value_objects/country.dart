@@ -1,14 +1,14 @@
 import 'package:laverdi/src/features/user/value_objects/value_object.dart';
 
-class Cep implements ValueObject {
+class Country extends ValueObject {
   final String _value;
 
-  Cep(this._value);
+  Country(this._value);
 
   @override
   String? validator() {
     if (_value.isEmpty) {
-      return 'O CEP deve ser inserido';
+      return 'O país deve ser preenchido';
     }
     return null;
   }

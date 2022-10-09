@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class EditTextField extends StatelessWidget {
+class LaverdiTextField extends StatelessWidget {
   final String value;
   final String label;
   final String? hint;
@@ -9,7 +9,7 @@ class EditTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
 
-  const EditTextField({
+  const LaverdiTextField({
     super.key,
     required this.value,
     required this.label,
