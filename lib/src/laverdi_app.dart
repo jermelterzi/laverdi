@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:laverdi/src/features/home/bloc/home_bloc.dart';
-import 'package:laverdi/src/features/home/store/home_store.dart';
+import 'package:laverdi/src/features/home/domain/store/home_store.dart';
+import 'package:laverdi/src/features/home/view/bloc/home_bloc.dart';
 import 'package:laverdi/src/features/user/view/user_details_view.dart';
 import 'package:laverdi/src/shared/app_routes.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:laverdi/src/features/home/bloc/home_bloc.dart';
-import 'package:laverdi/src/features/home/components/home_calendar/home_calendar.dart';
-import 'package:laverdi/src/features/home/components/home_header.dart';
-import 'package:laverdi/src/features/home/components/home_planner/home_planner.dart';
+import 'package:laverdi/src/features/home/view/bloc/home_bloc.dart';
+import 'package:laverdi/src/features/home/view/components/home_calendar/home_calendar.dart';
+import 'package:laverdi/src/features/home/view/components/home_header.dart';
+import 'package:laverdi/src/features/home/view/components/home_planner/home_planner.dart';
 import 'package:laverdi/src/shared/components/laverdi_bottom_navigation_bar.dart';
 
 class HomeView extends StatelessWidget {
@@ -41,7 +41,14 @@ class HomeView extends StatelessWidget {
                 return Column(
                   children: [
                     const HomeHeader(),
-                    state.showCalendar ? const HomeCalendar() : Container(),
+                    AnimatedCrossFade(
+                      firstChild: Container(),
+                      secondChild: const HomeCalendar(),
+                      crossFadeState: state.showCalendar
+                          ? CrossFadeState.showSecond
+                          : CrossFadeState.showFirst,
+                      duration: const Duration(milliseconds: 600),
+                    ),
                     const HomePlanner(),
                   ],
                 );

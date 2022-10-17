@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/home_bloc.dart';
-import '../../models/meal.dart';
-import 'meal_widget.dart';
+import 'package:laverdi/src/features/home/domain/models/meal.dart';
+import 'package:laverdi/src/features/home/view/bloc/home_bloc.dart';
+import 'package:laverdi/src/features/home/view/components/home_planner/meal_widget.dart';
 
 class HomePlanner extends StatelessWidget {
   const HomePlanner({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:laverdi/src/features/home/components/home_planner/recipes_card_widget.dart';
+import 'package:laverdi/src/features/home/view/components/home_planner/recipes_card_widget.dart';
 
 class MealWidget extends StatelessWidget {
   const MealWidget({Key? key, required this.name, required this.icon})

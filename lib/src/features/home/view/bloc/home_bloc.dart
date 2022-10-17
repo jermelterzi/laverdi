@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:laverdi/src/features/home/models/meal.dart';
-import 'package:laverdi/src/features/home/store/home_store.dart';
+import 'package:laverdi/src/features/home/domain/models/meal.dart';
+import 'package:laverdi/src/features/home/domain/store/home_store.dart';
 
 part 'home_events.dart';
 part 'home_state.dart';
@@ -29,7 +29,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         status: HomeStatus.loading,
       ),
     );
-    emit.forEach<List<Meal>>(
+    await emit.forEach<List<Meal>>(
       _store.loadMeals(event.date),
       onData: (data) => state.copyWith(
         status: HomeStatus.success,
@@ -45,8 +45,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> _showCalendar(
     ShowCalendarEvent event,
     Emitter<HomeState> emit,
-  ) {
-    emit.forEach<bool>(
+  ) async {
+    await emit.forEach<bool>(
       _store.showCalendar(),
       onData: (value) => state.copyWith(
         showCalendar: value,
