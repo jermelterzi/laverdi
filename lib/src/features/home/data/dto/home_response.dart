@@ -1,3 +1,3 @@
-import 'package:laverdi/src/utils/interfaces/response.dart';
+import 'package:laverdi/src/shared/interfaces/response.dart';
 
 class HomeResponse implements Response {}

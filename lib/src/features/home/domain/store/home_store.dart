@@ -1,5 +1,5 @@
 import 'package:laverdi/src/features/home/domain/models/meal.dart';
-import 'package:laverdi/src/utils/interfaces/repository.dart';
+import 'package:laverdi/src/shared/interfaces/repository.dart';
 
 class HomeStore {
   HomeStore({

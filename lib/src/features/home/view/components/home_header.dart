@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:laverdi/src/features/home/view/bloc/home_bloc.dart';
-import 'package:laverdi/src/utils/app_routes.dart';
-import 'package:laverdi/src/utils/extensions/string_extension.dart';
+import 'package:laverdi/src/shared/app_routes.dart';
+import 'package:laverdi/src/shared/extensions/string_extension.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});

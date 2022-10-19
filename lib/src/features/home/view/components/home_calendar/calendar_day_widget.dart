@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:laverdi/src/utils/extensions/string_extension.dart';
+import 'package:laverdi/src/shared/extensions/string_extension.dart';
 
 class CalendarDay extends StatelessWidget {
   const CalendarDay({super.key, required this.date});

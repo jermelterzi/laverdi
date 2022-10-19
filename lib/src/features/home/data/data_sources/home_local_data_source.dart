@@ -1,6 +1,6 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:laverdi/src/features/home/domain/models/meal.dart';
-import 'package:laverdi/src/utils/interfaces/local_data_source.dart';
+import 'package:laverdi/src/shared/interfaces/local_data_source.dart';
 
 class HomeLocalDataSource implements LocalDataSource {
   final List<Meal> _meals = [
