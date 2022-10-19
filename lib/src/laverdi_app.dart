@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:laverdi/src/features/home/data/repository/home_repository.dart';
 import 'package:laverdi/src/features/home/domain/store/home_store.dart';
 import 'package:laverdi/src/features/home/view/bloc/home_bloc.dart';
+import 'package:laverdi/src/features/home/view/home_view.dart';
 import 'package:laverdi/src/features/user/view/user_details_view.dart';
-import 'package:laverdi/src/shared/app_routes.dart';
-
-import 'features/home/view/home_view.dart';
+import 'package:laverdi/src/utils/app_routes.dart';
 
 class LaverdiApp extends StatelessWidget {
-  const LaverdiApp({Key? key}) : super(key: key);
+  const LaverdiApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc(store: HomeStore())
-        ..add(
+      create: (context) => HomeBloc(
+        store: HomeStore(
+          repository: HomeRepository(),
+        ),
+      )..add(
           LoadMealsEvent(
             date: DateTime.now(),
           ),

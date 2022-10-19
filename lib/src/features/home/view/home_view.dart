@@ -8,7 +8,7 @@ import 'package:laverdi/src/features/home/view/components/home_planner/home_plan
 import 'package:laverdi/src/shared/components/laverdi_bottom_navigation_bar.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomeView extends StatelessWidget {
       ),
       bottomNavigationBar: const LaVerdiBottomNavigationBar(),
       body: SafeArea(
-        child: Container(
+        child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/laverdi_background.jpg'),
@@ -32,9 +32,9 @@ class HomeView extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.only(
-              top: 16.0,
-              left: 8.0,
-              right: 8.0,
+              top: 16,
+              left: 8,
+              right: 8,
             ),
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {

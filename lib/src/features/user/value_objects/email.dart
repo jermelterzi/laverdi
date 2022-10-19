@@ -2,9 +2,9 @@ import 'package:laverdi/src/features/user/value_objects/value_object.dart';
 import 'package:string_validator/string_validator.dart' as string_validator;
 
 class Email implements ValueObject {
-  final String _value;
-
   Email(this._value);
+
+  final String _value;
 
   @override
   String? validator() {

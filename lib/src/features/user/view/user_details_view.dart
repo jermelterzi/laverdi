@@ -6,16 +6,15 @@ import 'package:flutter/services.dart';
 import 'package:laverdi/src/features/user/components/laverdi_dropdown_field.dart';
 import 'package:laverdi/src/features/user/components/laverdi_text_field.dart';
 import 'package:laverdi/src/features/user/data/countries_list.dart';
-
-import '../entities/user.dart';
+import 'package:laverdi/src/features/user/entities/user.dart';
 
 class UserDetailsView extends StatefulWidget {
-  final User? user;
-
   const UserDetailsView({
     super.key,
     this.user,
   });
+
+  final User? user;
 
   @override
   State<UserDetailsView> createState() => _UserDetailsViewState();
@@ -38,7 +37,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
     return Scaffold(
       appBar: AppBar(title: const Text('Meu Cadastro')),
       body: SafeArea(
-        child: Container(
+        child: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/laverdi_background.jpg'),
@@ -53,7 +52,6 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Flex(
                   direction: Axis.vertical,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Flexible(
                       flex: 3,
@@ -66,7 +64,8 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                                 CircleAvatar(
                                   radius: 80,
                                   backgroundImage: const AssetImage(
-                                      'assets/images/laverdi_logo.png'),
+                                    'assets/images/laverdi_logo.png',
+                                  ),
                                   backgroundColor:
                                       Theme.of(context).colorScheme.primary,
                                 ),
@@ -83,9 +82,9 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(32.0)),
+                              BorderRadius.vertical(top: Radius.circular(32)),
                         ),
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(16),
                         child: ListView(
                           physics: const NeverScrollableScrollPhysics(),
                           children: [
@@ -96,7 +95,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                               validator: (_) => user.name.validator(),
                               onChanged: user.setName,
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             LaverdiTextField(
                               value: user.email.toString(),
                               label: 'E-mail',
@@ -104,7 +103,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                               validator: (_) => user.email.validator(),
                               onChanged: user.setEmail,
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             LaverdiTextField(
                               value: user.phone.toString(),
                               label: 'Celular',
@@ -116,7 +115,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                                 TelefoneInputFormatter(),
                               ],
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             LaverdiTextField(
                               value: user.cpf.toString(),
                               label: 'CPF',
@@ -128,7 +127,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                                 CpfInputFormatter(),
                               ],
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             LaverdiDropdownField(
                               value: user.country.toString(),
                               items: countries,
@@ -136,7 +135,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                               validator: (_) => user.country.validator(),
                               onChanged: user.setCountry,
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             LaverdiTextField(
                               value: user.cep.toString(),
                               label: 'Código Postal',
@@ -148,31 +147,39 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                                 CepInputFormatter(),
                               ],
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             SwitchListTile(
                               value: user.isAlergic,
                               title: const Text('É alérgico a algum alimento?'),
-                              onChanged: user.setIsAlergic,
+                              onChanged: (newValue) => user.setIsAlergic(
+                                value: newValue,
+                              ),
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             SwitchListTile(
                               value: user.isLac,
                               title: const Text('É intolerante a lactose?'),
-                              onChanged: user.setIsLac,
+                              onChanged: (newValue) => user.setIsLac(
+                                value: newValue,
+                              ),
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             SwitchListTile(
                               value: user.isVeg,
                               title: const Text('É vegetariano?'),
-                              onChanged: user.setIsVeg,
+                              onChanged: (newValue) => user.setIsVeg(
+                                value: newValue,
+                              ),
                             ),
-                            const SizedBox(height: 8.0),
+                            const SizedBox(height: 8),
                             SwitchListTile(
                               value: user.isVegan,
                               title: const Text('É vegano?'),
-                              onChanged: user.setIsVegan,
+                              onChanged: (newValue) => user.setIsVegan(
+                                value: newValue,
+                              ),
                             ),
-                            const SizedBox(height: 16.0),
+                            const SizedBox(height: 16),
                             Flex(
                               direction: Axis.horizontal,
                               children: [
@@ -188,7 +195,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                                             .colorScheme
                                             .primary,
                                         side: BorderSide(
-                                          width: 2.0,
+                                          width: 2,
                                           color: Theme.of(context)
                                               .colorScheme
                                               .primary,
@@ -217,7 +224,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
                                         return;
                                       }
 
-                                      if (user.id == -1) {
+                                      if (user.id == '-1') {
                                         log('Usuário criado com sucesso!');
                                         log(user.toString());
                                       } else {

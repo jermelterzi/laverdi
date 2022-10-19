@@ -1,27 +1,15 @@
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../models/meal.dart';
+import 'package:laverdi/src/features/home/domain/models/meal.dart';
+import 'package:laverdi/src/utils/interfaces/repository.dart';
 
 class HomeStore {
-  final List<Meal> _meals = [];
+  HomeStore({
+    required this.repository,
+  });
   bool _isCalendarActive = false;
+  final Repository repository;
 
   Stream<List<Meal>> loadMeals(DateTime date) async* {
-    _meals.addAll([
-      Meal(
-        name: 'CAFÉ DA MANHÃ',
-        icon: FontAwesomeIcons.cloudSun,
-      ),
-      Meal(
-        name: 'ALMOÇO',
-        icon: FontAwesomeIcons.solidSun,
-      ),
-      Meal(
-        name: 'JANTAR',
-        icon: FontAwesomeIcons.solidMoon,
-      )
-    ]);
-    yield _meals;
+    yield repository.fetchAll() as List<Meal>;
   }
 
   Stream<bool> showCalendar() async* {

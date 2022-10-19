@@ -9,25 +9,27 @@ environment:
   sdk: ">=2.17.6 <3.0.0"
 
 dependencies:
+  brasil_fields: ^1.5.0
+  cupertino_icons: ^1.0.2
+  dio: ^4.0.6
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
-  provider: ^6.0.3
-  font_awesome_flutter: ^10.1.0
-  intl: ^0.17.0
+  flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
-  brasil_fields: ^1.5.0
+  font_awesome_flutter: ^10.1.0
+  intl: ^0.17.0
+  provider: ^6.0.3
   string_validator: ^0.3.0
-  flutter_bloc: ^8.1.1
-  equatable: ^2.0.5
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
   build_runner: ^2.2.0
   flutter_launcher_icons: ^0.10.0
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^3.1.0
 
 flutter_icons:
   android: true

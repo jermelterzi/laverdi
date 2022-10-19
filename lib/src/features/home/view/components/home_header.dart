@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:laverdi/src/features/home/view/bloc/home_bloc.dart';
-import 'package:laverdi/src/shared/app_routes.dart';
-import 'package:laverdi/src/shared/extensions/string_extension.dart';
+import 'package:laverdi/src/utils/app_routes.dart';
+import 'package:laverdi/src/utils/extensions/string_extension.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({super.key});
@@ -13,9 +13,9 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        bottom: 16.0,
-        left: 16.0,
-        right: 16.0,
+        bottom: 16,
+        left: 16,
+        right: 16,
       ),
       child: Row(
         children: [
@@ -23,13 +23,12 @@ class HomeHeader extends StatelessWidget {
             child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) {
                 return Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CircleAvatar(
                       radius: 20,
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 4.0),
+                        padding: const EdgeInsets.only(right: 4),
                         child: Text(
                           DateTime.now().day.toString().padLeft(2, '0'),
                           style: const TextStyle(
@@ -40,19 +39,20 @@ class HomeHeader extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8.0),
+                    const SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        state.showCalendar
-                            ? const Text(
-                                'HOJE',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black54,
-                                ),
-                              )
-                            : Container(height: 0),
+                        if (state.showCalendar)
+                          const Text(
+                            'HOJE',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black54,
+                            ),
+                          )
+                        else
+                          Container(height: 0),
                         Text(
                           DateFormat('EEEE', 'pt_BR')
                               .format(DateTime.now())
@@ -64,7 +64,7 @@ class HomeHeader extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(width: 8.0),
+                    const SizedBox(width: 8),
                     CircleAvatar(
                       radius: 14,
                       backgroundColor: Theme.of(context).colorScheme.primary,

@@ -8,9 +8,8 @@ abstract class HomeEvent extends Equatable {
 }
 
 class LoadMealsEvent extends HomeEvent {
-  final DateTime date;
-
   const LoadMealsEvent({required this.date});
+  final DateTime date;
 
   @override
   List<Object?> get props => [date];

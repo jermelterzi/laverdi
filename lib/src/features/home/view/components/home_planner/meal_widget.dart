@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:laverdi/src/features/home/view/components/home_planner/recipes_card_widget.dart';
 
 class MealWidget extends StatelessWidget {
-  const MealWidget({Key? key, required this.name, required this.icon})
-      : super(key: key);
+  const MealWidget({super.key, required this.name, required this.icon});
 
   final String name;
-  final IconData icon;
+  final int icon;
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +14,18 @@ class MealWidget extends StatelessWidget {
         Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4.0),
+            borderRadius: BorderRadius.circular(4),
             color: Theme.of(context).colorScheme.secondary,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                icon,
+                IconData(icon),
                 size: 16,
                 color: Colors.white,
               ),
-              const SizedBox(width: 8.0),
+              const SizedBox(width: 8),
               Text(
                 name,
                 style: const TextStyle(
@@ -37,7 +36,7 @@ class MealWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          padding: const EdgeInsets.symmetric(vertical: 4),
           child: SizedBox(
             height: 2 * 96,
             child: ListView.builder(

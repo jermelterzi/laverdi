@@ -8,14 +8,6 @@ enum HomeStatus {
 }
 
 class HomeState extends Equatable {
-  final HomeStatus status;
-  final List<Meal> meals;
-  final bool showCalendar;
-  final DateTime _date;
-  final String? errorMessage;
-
-  DateTime get date => _date;
-
   HomeState({
     this.status = HomeStatus.initial,
     this.showCalendar = false,
@@ -23,6 +15,13 @@ class HomeState extends Equatable {
     DateTime? date,
     this.errorMessage,
   }) : _date = date ?? DateTime.now();
+  final HomeStatus status;
+  final List<Meal> meals;
+  final bool showCalendar;
+  final DateTime _date;
+  final String? errorMessage;
+
+  DateTime get date => _date;
 
   HomeState copyWith({
     HomeStatus? status,

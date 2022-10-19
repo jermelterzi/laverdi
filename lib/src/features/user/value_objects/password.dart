@@ -1,9 +1,9 @@
 import 'package:laverdi/src/features/user/value_objects/value_object.dart';
 
 class Password implements ValueObject {
-  final String _value;
-
   Password(this._value);
+
+  final String _value;
 
   @override
   String? validator() {

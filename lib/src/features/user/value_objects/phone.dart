@@ -1,9 +1,9 @@
 import 'package:laverdi/src/features/user/value_objects/value_object.dart';
 
 class Phone implements ValueObject {
-  final String _value;
-
   Phone(this._value);
+
+  final String _value;
 
   @override
   String? validator() {

@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class LaverdiDropdownField extends StatelessWidget {
-  final String value;
-  final List<String> items;
-  final String hint;
-  final void Function(String?)? onChanged;
-  final String? Function(String?)? validator;
-
   const LaverdiDropdownField({
     super.key,
     required this.value,
@@ -15,6 +9,12 @@ class LaverdiDropdownField extends StatelessWidget {
     this.onChanged,
     this.validator,
   });
+
+  final String value;
+  final List<String> items;
+  final String hint;
+  final void Function(String?)? onChanged;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {

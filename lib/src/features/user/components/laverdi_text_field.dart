@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class LaverdiTextField extends StatelessWidget {
-  final String value;
-  final String label;
-  final String? hint;
-  final void Function(String)? onChanged;
-  final String? Function(String?)? validator;
-  final List<TextInputFormatter>? inputFormatters;
-
   const LaverdiTextField({
     super.key,
     required this.value,
@@ -18,6 +11,13 @@ class LaverdiTextField extends StatelessWidget {
     this.validator,
     this.inputFormatters,
   });
+
+  final String value;
+  final String label;
+  final String? hint;
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {

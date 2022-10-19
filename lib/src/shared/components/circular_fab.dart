@@ -12,7 +12,7 @@ class CircularFAB extends StatefulWidget {
 
 class _CircularFABState extends State<CircularFAB>
     with SingleTickerProviderStateMixin {
-  final double buttonSize = 56.0;
+  final double buttonSize = 56;
   late AnimationController controller;
 
   @override
@@ -64,9 +64,8 @@ class _CircularFABState extends State<CircularFAB>
 }
 
 class FlowMenuDelegate extends FlowDelegate {
-  final Animation<double> controller;
-
   FlowMenuDelegate({required this.controller}) : super(repaint: controller);
+  final Animation<double> controller;
 
   @override
   void paintChildren(FlowPaintingContext context) {
@@ -76,9 +75,9 @@ class FlowMenuDelegate extends FlowDelegate {
 
     final n = context.childCount;
 
-    for (int i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
       final isLastItem = i == context.childCount - 1;
-      setValue(value) => isLastItem ? 0.0 : value;
+      double setValue(double value) => isLastItem ? 0.0 : value;
 
       final radius = 180 * controller.value;
       final theta = i * pi * 0.5 / (n - 2);
@@ -86,7 +85,14 @@ class FlowMenuDelegate extends FlowDelegate {
       final x = xStart - setValue(radius * cos(theta));
       final y = yStart - setValue(radius * sin(theta));
 
-      context.paintChild(i, transform: Matrix4.identity()..translate(x, y, 0));
+      context.paintChild(
+        i,
+        transform: Matrix4.identity()
+          ..translate(
+            x,
+            y,
+          ),
+      );
     }
   }
 

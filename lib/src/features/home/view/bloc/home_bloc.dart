@@ -9,8 +9,6 @@ part 'home_events.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final HomeStore _store;
-
   HomeBloc({required HomeStore store})
       : _store = store,
         super(
@@ -19,6 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<LoadMealsEvent>(_loadMeals);
     on<ShowCalendarEvent>(_showCalendar);
   }
+  final HomeStore _store;
 
   FutureOr<void> _loadMeals(
     LoadMealsEvent event,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({Key? key}) : super(key: key);
+  const AuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return DecoratedBox(
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/laverdi_background.jpg'),

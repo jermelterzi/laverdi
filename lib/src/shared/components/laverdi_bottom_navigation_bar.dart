@@ -12,7 +12,7 @@ class LaVerdiBottomNavigationBar extends StatelessWidget {
       child: IconTheme(
         data: IconThemeData(color: Theme.of(context).colorScheme.secondary),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
