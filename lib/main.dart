@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:laverdi/src/laverdi_app.dart';
+import 'package:laverdi/src/app.dart';
 
 void main() {
-  runApp(const LaverdiApp());
+  runApp(const App());
 }
