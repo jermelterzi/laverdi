@@ -23,6 +23,24 @@ class LoggedUser extends User {
 
   @override
   List<Object?> get props => [id, name, email, token];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'token': token,
+    };
+  }
+
+  factory LoggedUser.fromMap(Map<String, dynamic> map) {
+    return LoggedUser(
+      id: map['id'] as String? ?? '',
+      name: map['name'] as String? ?? '',
+      email: map['email'] as String? ?? '',
+      token: map['token'] as String? ?? '',
+    );
+  }
 }
 
 class NotLoggedUser extends User {
