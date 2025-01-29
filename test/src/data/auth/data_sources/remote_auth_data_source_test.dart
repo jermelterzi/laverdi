@@ -53,8 +53,8 @@ void main() {
           expect(loginResult.isError(), isTrue);
           verify(
             firebaseAuthMock.signInWithEmailAndPassword(
-              email: 'jermelterzi@gmail.com',
-              password: 'Abc.1234',
+              email: CredentialsFixtures.tCredentials.email,
+              password: CredentialsFixtures.tCredentials.password,
             ),
           ).called(1);
           verifyNever(userCredentialMock.user);
@@ -86,8 +86,8 @@ void main() {
           expect(loginResult.isError(), isTrue);
           verify(
             firebaseAuthMock.signInWithEmailAndPassword(
-              email: 'jermelterzi@gmail.com',
-              password: 'Abc.1234',
+              email: CredentialsFixtures.tCredentials.email,
+              password: CredentialsFixtures.tCredentials.password,
             ),
           ).called(1);
           verify(userCredentialMock.user).called(1);
@@ -119,8 +119,8 @@ void main() {
           expect(loginResult.isSuccess(), isTrue);
           verify(
             firebaseAuthMock.signInWithEmailAndPassword(
-              email: 'jermelterzi@gmail.com',
-              password: 'Abc.1234',
+              email: CredentialsFixtures.tCredentials.email,
+              password: CredentialsFixtures.tCredentials.password,
             ),
           ).called(1);
           verify(userCredentialMock.user).called(1);
@@ -163,15 +163,15 @@ void main() {
           // ACT
           final registerResult = await remoteAuthDataSource.register(
             UserFixtures.tUser,
-            'Abc.1234',
+            'Abc@12345',
           );
 
           // ASSERT
           expect(registerResult.isError(), isTrue);
           verify(
             firebaseAuthMock.createUserWithEmailAndPassword(
-              email: 'jermelterzi@gmail.com',
-              password: 'Abc.1234',
+              email: UserFixtures.tUser.email,
+              password: 'Abc@12345',
             ),
           ).called(1);
           verifyNever(userCredentialMock.user);
@@ -198,15 +198,15 @@ void main() {
           // ACT
           final registerResult = await remoteAuthDataSource.register(
             UserFixtures.tUser,
-            'Abc.1234',
+            'Abc@12345',
           );
 
           // ASSERT
           expect(registerResult.isError(), isTrue);
           verify(
             firebaseAuthMock.createUserWithEmailAndPassword(
-              email: 'jermelterzi@gmail.com',
-              password: 'Abc.1234',
+              email: UserFixtures.tUser.email,
+              password: 'Abc@12345',
             ),
           ).called(1);
           verify(userCredentialMock.user).called(1);
@@ -235,15 +235,15 @@ void main() {
           // ACT
           final registerResult = await remoteAuthDataSource.register(
             UserFixtures.tUser,
-            'Abc.1234',
+            'Abc@12345',
           );
 
           // ASSERT
           expect(registerResult.isSuccess(), isTrue);
           verify(
             firebaseAuthMock.createUserWithEmailAndPassword(
-              email: 'jermelterzi@gmail.com',
-              password: 'Abc.1234',
+              email: UserFixtures.tUser.email,
+              password: 'Abc@12345',
             ),
           ).called(1);
           verify(userCredentialMock.user).called(3);
