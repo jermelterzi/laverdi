@@ -6,7 +6,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:result_dart/result_dart.dart';
 
-import '../fixtures/user_fixtures.dart';
+import '../../../domain/user/fixtures/user_fixtures.dart';
 @GenerateNiceMocks([MockSpec<SecureDatabase>()])
 import 'local_auth_data_source_test.mocks.dart';
 

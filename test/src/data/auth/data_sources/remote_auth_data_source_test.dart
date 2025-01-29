@@ -5,7 +5,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../../domain/user/dtos/fixtures/credentials_fixtures.dart';
-import '../fixtures/user_fixtures.dart';
+import '../../../domain/user/fixtures/user_fixtures.dart';
 @GenerateNiceMocks([
   MockSpec<FirebaseAuth>(),
   MockSpec<UserCredential>(),
