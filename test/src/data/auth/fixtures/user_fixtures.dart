@@ -1,4 +1,3 @@
-import 'package:laverdi/src/domain/user/dtos/credentials.dart';
 import 'package:laverdi/src/domain/user/user.dart';
 
 class UserFixtures {
@@ -22,10 +21,5 @@ class UserFixtures {
     id: '',
     name: 'João Victor Terzi',
     email: 'jermelterzi@gmail.com',
-  );
-
-  static final tCredentials = Credentials(
-    email: 'jermelterzi@gmail.com',
-    password: 'Abc.1234',
   );
 }

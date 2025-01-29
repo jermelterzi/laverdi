@@ -4,6 +4,7 @@ import 'package:laverdi/src/data/auth/data_sources/remote_auth_data_source.dart'
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../../domain/user/dtos/fixtures/credentials_fixtures.dart';
 import '../fixtures/user_fixtures.dart';
 @GenerateNiceMocks([
   MockSpec<FirebaseAuth>(),
@@ -45,7 +46,7 @@ void main() {
 
           // ACT
           final loginResult = await remoteAuthDataSource.login(
-            UserFixtures.tCredentials,
+            CredentialsFixtures.tCredentials,
           );
 
           // ASSERT
@@ -78,7 +79,7 @@ void main() {
 
           // ACT
           final loginResult = await remoteAuthDataSource.login(
-            UserFixtures.tCredentials,
+            CredentialsFixtures.tCredentials,
           );
 
           // ASSERT
@@ -111,7 +112,7 @@ void main() {
 
           // ACT
           final loginResult = await remoteAuthDataSource.login(
-            UserFixtures.tCredentials,
+            CredentialsFixtures.tCredentials,
           );
 
           // ASSERT
